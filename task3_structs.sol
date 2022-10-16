@@ -19,6 +19,9 @@ contract UserBalance {
     // Map address to user balance 
     mapping(address => uint) public userBalance;
 
+    // Map address to user
+    mapping(address => userDetails) userMap;
+    
     //get     
     function getBalance(address _addr) private view returns (uint){
         uint256 _amount = userBalance[_addr];
