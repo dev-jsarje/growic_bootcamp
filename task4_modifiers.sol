@@ -7,7 +7,7 @@ pragma solidity >=0.8.0 <0.9.0;
 // Custom error
 
 error AmountToSmall();
-error UserNotFunded();
+error userNotFunded();
 error cannotAddUserFund();
 
 contract UserBalance {
@@ -21,6 +21,7 @@ contract UserBalance {
     struct userDetails {
         string name;
         uint256 age;
+        bool canAddUserFund;
     }
 
     // Map address to user balance 
@@ -77,7 +78,7 @@ contract UserBalance {
 
     modifier checkDeposit() {
         if (userBalance[_addr] == 0) {
-            revert UserNotFunded();
+            revert userNotFunded();
         }
         _;
     }
@@ -96,7 +97,7 @@ contract UserBalance {
         _;
     }
 
-    function addFund(uint256 _amount) public payable userCanAddFund UserFunded(msg.sender) {
+    function addFund(uint256 _amount) public payable addUserFund checkDeposit(msg.sender) {
         setBalance(msg.sender, getBalance(msg.sender) + _amount - Fee);
     }
 
