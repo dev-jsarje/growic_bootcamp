@@ -53,17 +53,19 @@ contract UserBalance {
         return getBalance(msg.sender);
     }
 
-    // Set user details
-    function setUserDetails(string calldata _name, uint256 _age) public { 
-        userDetails memory _userDetails = userDetails(_name, _age);
-        setUserDetails(msg.sender, _userDetails);
+        // Set user details
+    function setUserDetails(address _addr, string calldata _name, uint256 _age) public { 
+        // userDetails memory _userDetails = userDetails(_name, _age);
+        userMap[_addr].name = _name;
+        userMap[_addr].age = _age;
     }
 
     // Get user details
     function getUserDetail() public view returns (userDetails memory) { 
-        return (msg.sender, userDetails);
+        return (userMap[msg.sender]);
     }
 
+    
     // Add a withdraw function
         modifier onlyOwner() {
             require(msg.sender == owner, "Not owner");
@@ -76,10 +78,9 @@ contract UserBalance {
 
     // Add an addFund function
 
-    modifier checkDeposit() {
-        if (userBalance[_addr] == 0) {
-            revert userNotFunded();
-        }
+   
+    modifier checkDeposit(address _addr) {
+        userBalance[msg.sender] == 0;
         _;
     }
 
