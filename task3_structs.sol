@@ -48,12 +48,12 @@ contract UserBalance {
     // Set user details
     function setUserDetails(string calldata _name, uint256 _age) public { 
         userDetails memory _userDetails = userDetails(_name, _age);
-        setUserDetails(msg.sender, _userDetails);
+        userMap[msg.sender] = _userDetails;
     }
 
     // Get user details
     function getUserDetail() public view returns (userDetails memory) { 
-        return (msg.sender, userDetails);
+        return (userMap[msg.sender]);
     }
 
 }
