@@ -13,7 +13,7 @@ contract UserBalance {
 
     struct userDetails {
         string name;
-        unit256 age;
+        uint256 age;
     }
 
     // Map address to user balance 
