@@ -7,3 +7,5 @@
 🥼 Learning Solidity - Primitive Data Types, Mappings, Structs, Modifiers, Events, Inheritance, Payable, Fallback
 
 🔨 Buidl - NFTs, Smart Contract, Token, Dex, Multisig, Aave
+
+⌛ Resources Used - Tasks: Remix IDE; MetaMask wallet; Visual Studio Code | Buidl - Ubuntu via Virtual Box
